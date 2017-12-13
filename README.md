@@ -11,7 +11,7 @@ A front end for geeklist-api
 This app provides a view into the stats that the
 [https://github.com/kelsin/geeklist-api](geeklist-api) gathers.
 
-It is available for use at [https://geeklists.kelsin.net/].
+It is available for use at [https://geeklists.kelsin.net/](https://geeklists.kelsin.net/).
 
 ## Redux Store
 
