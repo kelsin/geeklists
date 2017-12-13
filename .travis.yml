@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- '8'
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm i -g npm@5.6
+before_script:
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter; fi
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build;
+  fi
+after_script:
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code
+  $TRAVIS_TEST_RESULT; fi
+env:
+  secure: Lh/dPhgJZ2v9SPXE28e8MlPIPoYI200y9fjGSi7H/UTLNtUZ7UfvZpWfUOpbIbAqHw9KwLY0sjVkGYfCuYWPuVh2I/EVtpMKzDPWm0w5vw066F+ZjYIbCHZqbwhuaOsXO2I5KdlR/TADWrXrk6lAcxBuXffaIFVVRRtSjUPwYlihZvYJHew14uZLvYAOZVoKmKhDE1YtF69U6gZ20d4dZldC6miPtTLjKEO/Pv12fteMC6YpTU4YucvvNSmpCVRp2NgxFFRNo3FTh3H7y1xo6Ab8YYc1Hooi5T5awXIsBeGZds7DYJEwKTltvAZtC1EuVDAHBxUGpJUI9AnrVqjABI09diuftddJ+oxbO7WZh/Ax4k8v38pfTtEo5vq0NyiWga6n7f3nANtWvLhm1asntzlesyWALbjEM7PqwNLx0ZyF9cd8NLiVojruNiPKgoGL3GSKA9BaNcP/j1YO9zw5siV9M6B3RjYbSMdggKw0qM1/iSphA3nDyAY5hW6NoFTQmEvtvMcbYPtiZ1lWfUcTSZzWrRTaSTlSD0jhne9EeTzfz6GGx84zvyB8CYme6n5/YvtjO+Vp8ns3tnmsZn1xgbT0ZO20fx81ZSosCqyT8Khzs+hhKz+rC5o+vYBCxJ8c4o2yTmLQsTn4rPJZ6Z2kJ4X4mE/sRurpJ8tMScmjBTQ=
