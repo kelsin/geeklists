@@ -1,0 +1,23 @@
+.loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.loader.loading {
+  opacity: 1;
+}
+
+.loader img {
+  animation: loader-spin infinite 4s linear;
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes loader-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
