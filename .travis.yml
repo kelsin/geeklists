@@ -12,6 +12,9 @@ before_script:
 - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
 - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build;
   fi
+script:
+- npm run build
+- npm test -- --coverage
 after_script:
 - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code
   $TRAVIS_TEST_RESULT; fi
