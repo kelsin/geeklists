@@ -5,7 +5,7 @@ class Image extends Component {
     let size = this.props.size ? "_" + this.props.size : "";
     let id = this.props.id;
     return (
-      <img src={"https://cf.geekdo-images.com/images/pic" + id + size + ".png"} />
+      <img alt="BoardGameGeek image" src={"https://cf.geekdo-images.com/images/pic" + id + size + ".png"} />
     );
   }
 }

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import map from 'ramda/src/map';
 import compose from 'ramda/src/compose';
 
 import { loadGroupUser } from '../../store/actions/loading';
-import Image from '../Image';
 
 class User extends Component {
   componentDidMount() {
