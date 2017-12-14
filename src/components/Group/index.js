@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import map from 'ramda/src/map';
+import values from 'ramda/src/values';
 import compose from 'ramda/src/compose';
+import descend from 'ramda/src/descend';
+import sortWith from 'ramda/src/sortWith';
+import prop from 'ramda/src/prop';
 
-import { loadGroup } from '../../store/actions/loading';
+import { loadGroups, loadGroup } from '../../store/actions/loading';
+
+const geeklistSort = sortWith([descend(prop('year')),
+                               descend(prop('month'))]);
 
 class Group extends Component {
   componentDidMount() {
-    this.props.loadGroup(this.props.match.params.slug);
+    this.props.loadGroups()
+      .then(() => this.props.loadGroup(this.props.match.params.slug));
   }
 
   render() {
@@ -20,7 +28,7 @@ class Group extends Component {
           {list.title}
         </Link>
       </li>
-    ), group ? group.geeklists : []);
+    ), geeklistSort(values(group.geeklists)));
 
     return (
       <div className="group">
@@ -34,11 +42,12 @@ class Group extends Component {
 }
 
 const mapStateToProps = (state, {match}) => ({
-  group: state.group[match.params.slug]
+  group: state.groups[match.params.slug] || { geeklists: {} }
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadGroup: compose(dispatch, loadGroup)
+  loadGroup: compose(dispatch, loadGroup),
+  loadGroups: compose(dispatch, loadGroups)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Group);

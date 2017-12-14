@@ -35,6 +35,7 @@ let state = {
       users: {
         Kelsin: {
           username: "Kelsin",
+          group_slug: "sgoyt",
 
           // Stats for this user as part of this group
           stats: {
@@ -51,7 +52,7 @@ let state = {
             objectid: 143404,
             imageid: 2682875,
             summary: "Excellent puzzle with amazing art and fast play time!",
-            rating: "4.5",
+            rating: 4.5,
             id: 5681310,
             postdate: "2017-10-03T17:58:18.000Z"
           },
@@ -60,7 +61,7 @@ let state = {
 
           // Data for the geeklists that this user posted to
           geeklists: {
-            233358: {
+            "233358": {
               geeklist_id: 233358,
               title: "Solitaire Games on Your Table -- December 2017",
               year: 2017,
@@ -98,8 +99,9 @@ let state = {
 
       // All geeklists in this group
       geeklists: {
-        233358: {
+        "233358": {
           title: "Solitaire Games on Your Table -- December 2017",
+          id: 233358,
           year: 2017,
           month: 12,
           group_slug: "sgoyt",

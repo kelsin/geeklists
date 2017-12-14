@@ -6,3 +6,15 @@ body {
   color: #111;
   font: 20px sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+
+a.active {
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+}
