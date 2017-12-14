@@ -22,3 +22,7 @@ nav ul {
 .recharts-wrapper {
   font-size: 14px;
 }
+
+td img {
+  padding-left: 6px;
+}

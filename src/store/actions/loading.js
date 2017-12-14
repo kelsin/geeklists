@@ -33,7 +33,6 @@ const createLoader = (type, cache, url, transform = identity) => (dispatch, getS
         data
       }))
       .then(dispatch)
-      .catch(console.log.bind.console)
       .then(compose(dispatch, doneLoading));
   } else {
     return Promise.resolve();

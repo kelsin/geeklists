@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import map from 'ramda/src/map';
-import values from 'ramda/src/values';
+
+import BGGLink from '../BGGLink';
+
 import compose from 'ramda/src/compose';
 import descend from 'ramda/src/descend';
-import sortWith from 'ramda/src/sortWith';
+import map from 'ramda/src/map';
 import prop from 'ramda/src/prop';
+import sortWith from 'ramda/src/sortWith';
+import values from 'ramda/src/values';
 
 import { loadGroups, loadGroup } from '../../store/actions/loading';
 
@@ -14,6 +17,12 @@ const geeklistSort = sortWith([descend(prop('year')),
                                descend(prop('month'))]);
 
 class Group extends Component {
+  static defaultProps = {
+    group: {
+      geeklists: {}
+    }
+  };
+
   componentDidMount() {
     this.props.loadGroups()
       .then(() => this.props.loadGroup(this.props.match.params.slug));
@@ -32,7 +41,8 @@ class Group extends Component {
 
     return (
       <div className="group">
-        <h3>{this.props.group && this.props.group.slug}</h3>
+        <h3>{group.slug}</h3>
+        <ul><li><BGGLink type="thread" id={this.props.group && this.props.group.thread}/></li></ul>
         <ul>
           {lists}
         </ul>

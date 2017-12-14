@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Rating from '../../Rating';
-import List from '../../List';
+
+import BGGLink from '../../BGGLink';
 import Chart from '../../Chart';
-import map from 'ramda/src/map';
-import values from 'ramda/src/values';
+import List from '../../List';
+import PriceLink from '../../PriceLink';
+import Rating from '../../Rating';
+
 import compose from 'ramda/src/compose';
 import descend from 'ramda/src/descend';
-import sortWith from 'ramda/src/sortWith';
-import prop from 'ramda/src/prop';
+import map from 'ramda/src/map';
 import pathOr from 'ramda/src/pathOr';
+import prop from 'ramda/src/prop';
+import sortWith from 'ramda/src/sortWith';
+import values from 'ramda/src/values';
 
 import { loadGroups, loadGroup, loadGroupGame } from '../../../store/actions/loading';
 
@@ -38,14 +42,14 @@ class Geeklist extends Component {
 
     let getStat = stat => pathOr(0, ['games', id, 'stats', stat], group || {});
 
-    let ratings = map(rating => (<Rating slug={slug} rating={rating}/>), pathOr([], ['ratings'], game));
+    let ratings = map(rating => (<Rating key={rating.id} slug={slug} rating={rating}/>), pathOr([], ['ratings'], game));
 
-    let lists = map(list => (<List slug={slug} list={list}/>), getListsFromGame(game));
+    let lists = map(list => (<List key={list.id} slug={slug} list={list}/>), getListsFromGame(game));
 
     return (
       <div className="group">
         <Link to={"/group/" + slug}>Back to {slug}</Link>
-        <h2>{game && game.objectname}</h2>
+        <h2>{game && game.objectname} <BGGLink id={id}/> <PriceLink id={id}/></h2>
         <Chart stats={["entries", "users"]} geeklists={game.geeklists}/>
         <h3>Stats</h3>
         <dl>
@@ -68,7 +72,7 @@ class Geeklist extends Component {
         <h3>Entries</h3>
         <table>
           <thead>
-            <tr><th>Date</th><th>User</th><th>Item</th><th>Thumbs</th>
+            <tr><th>Date</th><th>User</th><th>Thumbs</th>
             <th>Summary</th><th>Rating</th></tr>
           </thead>
           {lists}

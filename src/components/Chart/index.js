@@ -20,7 +20,7 @@ import tail from 'ramda/src/tail';
 import values from 'ramda/src/values';
 
 const arrayOfMonths = (startYear, startMonth) => {
-  let start = moment(`${startYear}-${startMonth}-01`);
+  let start = moment(`${startYear}-${startMonth}-01`, 'YYYY-MM-DD');
   let end = moment().startOf('month');
 
   let builder = (list) => {

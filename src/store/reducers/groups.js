@@ -31,7 +31,6 @@ const groupsReducer = (state = {}, action) => {
   case SET_GROUP_GAME: {
     let slug = action.data.group_slug;
     let id = action.data.objectid;
-    console.log({state, action, slug, id});
 
     return {
       ...state,

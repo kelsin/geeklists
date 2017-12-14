@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import Entry from '../../Entry';
-import map from 'ramda/src/map';
+import BGGLink from '../../BGGLink';
+
 import compose from 'ramda/src/compose';
+import map from 'ramda/src/map';
 import pathOr from 'ramda/src/pathOr';
 
 import { loadGroups, loadGroup, loadGroupGeeklist } from '../../../store/actions/loading';
@@ -27,12 +30,13 @@ class Geeklist extends Component {
 
     let getStat = stat => pathOr(0, ['geeklists', id, 'stats', stat], group || {});
 
-    let entries = map(entry => (<Entry slug={slug} entry={entry}/>), pathOr([], ['entries'], geeklist));
+    let entries = map(entry => (<Entry key={entry.id} slug={slug} entry={entry}/>), pathOr([], ['entries'], geeklist));
 
     return (
       <div className="group">
         <Link to={"/group/" + slug}>Back to {slug}</Link>
         <h3>{geeklist && geeklist.title}</h3>
+        <ul><li><BGGLink type="geeklist" id={id}/></li></ul>
         <dl>
           <dt>Entries</dt><dd>{getStat('entries')}</dd>
           <dt>Games</dt><dd>{getStat('games')}</dd>
