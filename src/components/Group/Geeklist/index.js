@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import BGGLink from '../../BGGLink';
 import Entry from '../../Entry';
 import map from 'ramda/src/map';
 import compose from 'ramda/src/compose';
-import descend from 'ramda/src/descend';
-import sortWith from 'ramda/src/sortWith';
-import prop from 'ramda/src/prop';
 import pathOr from 'ramda/src/pathOr';
-import moment from 'moment';
 
 import { loadGroups, loadGroup, loadGroupGeeklist } from '../../../store/actions/loading';
 

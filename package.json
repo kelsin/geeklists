@@ -22,6 +22,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "jest-cli": "^21.2.1"
+    "jest-cli": "^21.2.1",
+    "timekeeper": "^2.0.0"
   }
 }

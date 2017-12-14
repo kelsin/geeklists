@@ -18,3 +18,7 @@ a.active {
 nav ul {
   list-style: none;
 }
+
+.recharts-wrapper {
+  font-size: 14px;
+}

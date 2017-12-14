@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import BGGLink from '../../BGGLink';
 import Rating from '../../Rating';
 import List from '../../List';
+import Chart from '../../Chart';
 import map from 'ramda/src/map';
 import values from 'ramda/src/values';
 import compose from 'ramda/src/compose';
@@ -11,7 +11,6 @@ import descend from 'ramda/src/descend';
 import sortWith from 'ramda/src/sortWith';
 import prop from 'ramda/src/prop';
 import pathOr from 'ramda/src/pathOr';
-import moment from 'moment';
 
 import { loadGroups, loadGroup, loadGroupGame } from '../../../store/actions/loading';
 
@@ -47,11 +46,11 @@ class Geeklist extends Component {
       <div className="group">
         <Link to={"/group/" + slug}>Back to {slug}</Link>
         <h2>{game && game.objectname}</h2>
+        <Chart stats={["entries", "users"]} geeklists={game.geeklists}/>
         <h3>Stats</h3>
         <dl>
           <dt>Entries</dt><dd>{getStat('entries')}</dd>
           <dt>Users</dt><dd>{getStat('users')}</dd>
-          <dt>Uniques</dt><dd>{getStat('uniques')}</dd>
           <dt>Summaries</dt><dd>{getStat('summaries')}</dd>
           <dt>Ratings</dt><dd>{getStat('ratings')}</dd>
         </dl>

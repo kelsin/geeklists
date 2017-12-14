@@ -5,9 +5,7 @@ import prop from 'ramda/src/prop';
 import moment from 'moment';
 import { loading, doneLoading,
          SET_GROUPS, SET_GROUP,
-         SET_GROUP_GAME, SET_GROUP_GEEKLIST, SET_GROUP_USER,
-         setGroups, setGroup,
-         setGroupGame, setGroupGeeklist, setGroupUser } from './index';
+         SET_GROUP_GAME, SET_GROUP_GEEKLIST, SET_GROUP_USER } from './index';
 
 const API = 'https://geeklist-api.kelsin.net/';
 
