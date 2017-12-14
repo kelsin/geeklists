@@ -35,8 +35,7 @@ class Geeklist extends Component {
     return (
       <div className="group">
         <Link to={"/group/" + slug}>Back to {slug}</Link>
-        <h3>{geeklist && geeklist.title}</h3>
-        <ul><li><BGGLink type="geeklist" id={id}/></li></ul>
+        <h3>{geeklist && geeklist.title} <BGGLink type="geeklist" id={id}/></h3>
         <dl>
           <dt>Entries</dt><dd>{getStat('entries')}</dd>
           <dt>Games</dt><dd>{getStat('games')}</dd>

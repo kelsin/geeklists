@@ -36,13 +36,14 @@ class Group extends Component {
         <Link to={"/group/" + group.slug + "/geeklist/" + list.id}>
           {list.title}
         </Link>
+        &nbsp;
+        <BGGLink type="geeklist" id={list.id}/>
       </li>
     ), geeklistSort(values(group.geeklists)));
 
     return (
       <div className="group">
-        <h3>{group.slug}</h3>
-        <ul><li><BGGLink type="thread" id={this.props.group && this.props.group.thread}/></li></ul>
+        <h3>{group.slug} <BGGLink type="thread" id={group.thread}/></h3>
         <ul>
           {lists}
         </ul>
