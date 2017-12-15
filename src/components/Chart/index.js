@@ -106,7 +106,7 @@ class Chart extends Component {
 
     let lines = addIndex(map)((key, index) => {
       let color = shuffledColors[index%colors.length];
-      return <Line key={key} name={capitalize(key)} type="monotone" dataKey={key} strokeWidth={3} stroke={color} activeDot={{r: 6}}/>;
+      return <Line isAnimationActive={false} key={key} name={capitalize(key)} type="monotone" dataKey={key} strokeWidth={3} stroke={color} activeDot={{r: 6}}/>;
     }, reverse(stats));
 
     return (
