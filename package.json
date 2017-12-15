@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "jest-cli": "^21.2.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
     "timekeeper": "^2.0.0"
   }
 }
