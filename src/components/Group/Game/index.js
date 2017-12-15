@@ -34,6 +34,21 @@ class Geeklist extends Component {
       .then(() => loadGroupGame(slug, id));
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { match, loadGroup, loadGroupGame } = this.props;
+    let { slug, id } = match.params;
+
+    if(slug !== nextProps.match.params.slug) {
+      loadGroup(nextProps.match.params.slug);
+    }
+
+    if(slug !== nextProps.match.params.slug ||
+       id !== nextProps.match.params.id) {
+      loadGroupGame(nextProps.match.params.slug,
+                    nextProps.match.params.id);
+    }
+  }
+
   render() {
     let slug = this.props.match.params.slug;
     let id = this.props.match.params.id;

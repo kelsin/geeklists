@@ -33,6 +33,21 @@ class User extends Component {
       .then(() => loadGroupUser(slug, username));
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { match, loadGroup, loadGroupUser } = this.props;
+    let { slug, username } = match.params;
+
+    if(slug !== nextProps.match.params.slug) {
+      loadGroup(nextProps.match.params.slug);
+    }
+
+    if(slug !== nextProps.match.params.slug ||
+       username !== nextProps.match.params.username) {
+      loadGroupUser(nextProps.match.params.slug,
+                    nextProps.match.params.username);
+    }
+  }
+
   render() {
     let slug = this.props.match.params.slug;
     let username = this.props.match.params.username;

@@ -22,6 +22,21 @@ class Geeklist extends Component {
       .then(() => loadGroupGeeklist(slug, id));
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { match, loadGroup, loadGroupGeeklist } = this.props;
+    let { slug, id } = match.params;
+
+    if(slug !== nextProps.match.params.slug) {
+      loadGroup(nextProps.match.params.slug);
+    }
+
+    if(slug !== nextProps.match.params.slug ||
+       id !== nextProps.match.params.id) {
+      loadGroupGeeklist(nextProps.match.params.slug,
+                        nextProps.match.params.id);
+    }
+  }
+
   render() {
     let slug = this.props.match.params.slug;
     let id = this.props.match.params.id;
