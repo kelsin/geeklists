@@ -1,1 +1,71 @@
-.nav__item--group { text-transform: uppercase; }
+@import '../../_variables';
+
+.nav {
+  display: none;
+  &--open {
+    display: block;
+    .nav__list {
+      flex-direction: column;
+      position: absolute;
+      
+    }
+  }
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+  &__list { display: flex; list-style: none outside; margin: 0; }
+  &__item {
+    &--group {
+      text-transform: uppercase;
+    }
+  }
+  &__link {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-decoration: none;
+    position: relative;
+    &--active {
+      font-weight: bold;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: $blue;
+    }
+  }
+  
+  &__link-name {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+      position: absolute;
+      transition: all 0.25s;
+      font-size: 0.8em;
+      pointer-events: none;
+      opacity: 0;
+      text-align: center;
+      text-transform: none;
+      font-weight: normal;
+      top: calc(100% + 0.5em);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      transition-delay: 0.1s;
+      white-space: nowrap;
+      .nav__link:hover & {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      .nav__item:last-child & {
+        left: auto;
+        right: 0;
+        transform: translateX(0) translateY(10px);
+      }
+      .nav__item:last-child .nav__link:hover & {
+        left: auto;
+        transform: translateX(0) translateY(0);
+      }
+    }
+    
+  }
+}

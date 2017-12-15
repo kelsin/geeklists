@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import Loader from './components/Loader';
-import Group from './components/Group';
-import Game from './components/Group/Game';
-import Geeklist from './components/Group/Geeklist';
-import User from './components/Group/User';
 import { Route } from 'react-router-dom';
-import Nav from './components/Nav';
+
+import Loader from './Loader';
+import Group from './Group';
+import Game from './Group/Game';
+import Geeklist from './Group/Geeklist';
+import User from './Group/User';
+import Header from './Header';
 
 class App extends Component {
   render() {
     return (
       <div className="Geeklists">
-        <Route path="/" component={Nav} />
+        <Header />
         <Route exact path="/group/:slug" component={Group} />
         <Route exact path="/group/:slug/game/:id" component={Game} />
         <Route exact path="/group/:slug/geeklist/:id" component={Geeklist} />

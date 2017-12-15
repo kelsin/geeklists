@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import grid from './grid.svg';
-import './index.css';
+import './index.scss';
 
 class Loader extends Component {
   render() {

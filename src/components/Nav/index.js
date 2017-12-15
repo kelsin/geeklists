@@ -1,7 +1,7 @@
 import './index.scss';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import map from 'ramda/src/map';
 import ascend from 'ramda/src/ascend';
 import prop from 'ramda/src/prop';
@@ -23,16 +23,16 @@ class Nav extends Component {
   render() {
     let groups = map(group => (
       <li className="nav__item nav__item--group" key={group.slug}>
-        <NavLink className="nav__link" title={group.name} to={"/group/" + group.slug}>{group.slug}</NavLink>
+        <NavLink className="nav__link" activeClassName="nav__link--active" to={"/group/" + group.slug}>
+          {group.slug}
+          <span className="nav__link-name">{group.name}</span>
+        </NavLink>
       </li>
     ), this.props.groups);
     
     return (
-      <nav className="nav">
+      <nav className={this.props.open ? 'nav nav--open' : 'nav'}>
         <ul className="nav__list">
-          <li className="nav__item">
-            <NavLink className="nav__link" exact to="/">Home</NavLink>
-          </li>
           {groups}
         </ul>
       </nav>
@@ -48,4 +48,4 @@ const mapDispatchToProps = dispatch => ({
   loadGroups: compose(dispatch, loadGroups)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));

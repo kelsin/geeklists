@@ -24,8 +24,18 @@ class Group extends Component {
   };
 
   componentDidMount() {
-    this.props.loadGroups()
-      .then(() => this.props.loadGroup(this.props.match.params.slug));
+    this.props.loadGroups().then(() => {
+      this.props.loadGroup(this.props.match.params.slug);
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let slug = this.props.match.params.slug;
+    let nextSlug = nextProps.match.params.slug;
+
+    if(slug !== nextSlug) {
+      this.props.loadGroup(nextSlug);
+    }
   }
 
   render() {
@@ -43,7 +53,7 @@ class Group extends Component {
 
     return (
       <div className="group">
-        <h3>{group.slug} <BGGLink type="thread" id={group.thread}/></h3>
+        <h3>{group.name} <BGGLink type="thread" id={group.thread}/></h3>
         <ul>
           {lists}
         </ul>

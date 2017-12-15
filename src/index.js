@@ -1,7 +1,8 @@
 import React from 'react';
 import '../node_modules/normalize.css/normalize.css';
-import './index.css';
-import App from './App';
+import './index.scss';
+import './lib/fontawesome-all';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { render } from 'react-dom';
