@@ -1,0 +1,18 @@
+@import '../../_variables';
+
+.recharts-wrapper {
+  background: $black;
+  color: #fff;
+  font-size: 0.8em;
+  border-radius: 10px;
+  border: 4px solid rgba(0,0,0,0.25);
+  margin: 1em;
+}
+
+.recharts-default-tooltip {
+  border: none !important;
+}
+
+.recharts-tooltip-label {
+  margin-bottom: 5px !important;
+}
