@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import moment from 'moment';
+
 import Entry from '../../Entry';
 import BGGLink from '../../BGGLink';
 
@@ -10,6 +12,8 @@ import map from 'ramda/src/map';
 import pathOr from 'ramda/src/pathOr';
 
 import { loadGroups, loadGroup, loadGroupGeeklist } from '../../../store/actions/loading';
+
+import './index.scss';
 
 class Geeklist extends Component {
   componentDidMount() {
@@ -42,6 +46,12 @@ class Geeklist extends Component {
     let id = this.props.match.params.id;
     let group = this.props.group;
     let geeklist = group.geeklists && group.geeklists[this.props.match.params.id];
+    let updated_at = moment(geeklist && geeklist.updated_at).fromNow();
+    let next_update_at_moment = moment(geeklist && geeklist.next_update_at);
+    let next_update_at = next_update_at_moment.fromNow();
+    if(next_update_at_moment.isBefore(moment())) {
+      next_update_at = "soon";
+    }
 
     let getStat = stat => pathOr(0, ['geeklists', id, 'stats', stat], group || {});
 
@@ -51,6 +61,7 @@ class Geeklist extends Component {
       <div className="group">
         <Link to={"/group/" + slug}>Back to {slug}</Link>
         <h3>{geeklist && geeklist.title} <BGGLink type="geeklist" id={id}/></h3>
+        <span className="updates">Last updated {updated_at}. Next update {next_update_at}.</span>
         <dl>
           <dt>Entries</dt><dd>{getStat('entries')}</dd>
           <dt>Games</dt><dd>{getStat('games')}</dd>
