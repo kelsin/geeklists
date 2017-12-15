@@ -1,5 +1,35 @@
 @import './_variables';
 
-html, body { font-family: 'Open Sans', sans-serif; color: $black; }
+html, body { font-family: 'Open Sans', sans-serif; color: $black; max-width: 1280px; }
 a { color: currentColor; }
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+table {
+  th {
+    text-align: left;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+
+  thead tr {
+    background: #ddd !important;
+  }
+
+  tr {
+    &:nth-child(odd) { background: #eee; }
+
+    &:last-child td, th {
+      border-bottom: 2px solid $black;
+    }
+  }
+
+  td {
+    padding: 10px;
+    white-space: nowrap;
+
+    &.summary {
+      white-space: normal;
+    }
+  }
+}

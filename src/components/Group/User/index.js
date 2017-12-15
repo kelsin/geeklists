@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import BGGLink from '../../BGGLink';
 import Chart from '../../Chart';
-import List from '../../List';
 import Rating from '../../Rating';
+import Entries from '../../Entries';
 
 import compose from 'ramda/src/compose';
 import descend from 'ramda/src/descend';
@@ -58,8 +58,6 @@ class User extends Component {
 
     let ratings = map(rating => (<Rating key={rating.id} slug={slug} rating={rating}/>), pathOr([], ['ratings'], user));
 
-    let lists = map(list => (<List key={list.id} slug={slug} list={list}/>), getListsFromUser(user));
-
     return (
       <div className="group">
         <Link to={"/group/" + slug}>Back to {slug}</Link>
@@ -83,14 +81,7 @@ class User extends Component {
             {ratings}
           </tbody>
         </table>
-        <h3>Entries</h3>
-        <table>
-          <thead>
-            <tr><th>Date</th><th>Item</th><th>Thumbs</th>
-            <th>Summary</th><th>Rating</th></tr>
-          </thead>
-          {lists}
-        </table>
+        <Entries slug={slug} geeklists={getListsFromUser(user)} />
       </div>
     )
   }

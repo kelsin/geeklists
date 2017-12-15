@@ -114,7 +114,7 @@ class Chart extends Component {
                  margin={{ top: 40, right: 40, left: -20, bottom: 10 }}>
         <XAxis name="Months" dataKey="name" stroke="rgba(255,255,255,0.33)" />
         <YAxis stroke="rgba(255,255,255,0.33)" />
-        <Tooltip isAnimationActive={false} animationDuration={150} wrapperStyle={{ background: '#084559', 'border-radius': '5px', border: '2px solid rgba(0,0,0,0.25)' }}/>
+        <Tooltip isAnimationActive={false} animationDuration={150} wrapperStyle={{ background: '#084559', borderRadius: '5px', border: '2px solid rgba(0,0,0,0.25)' }}/>
         <Legend />
         <CartesianGrid stroke="rgba(0,0,0,0.25)" />
         {lines}

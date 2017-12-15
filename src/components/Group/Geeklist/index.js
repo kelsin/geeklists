@@ -72,8 +72,14 @@ class Geeklist extends Component {
         </dl>
         <table>
           <thead>
-            <tr><th>Date</th><th>User</th><th>Item</th><th>Thumbs</th>
-            <th>Summary</th><th>Rating</th></tr>
+            <tr>
+              <th>User</th>
+              <th>Game</th>
+              <th>Thumbs</th>
+              <th>Summary</th>
+              <th>Rating</th>
+              <th>Date</th>
+            </tr>
           </thead>
           <tbody>
             {entries}
