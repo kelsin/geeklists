@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import logo from '../../images/bgg.png';
+import logo from '../images/bgg.png';
 
 class BGGLink extends Component {
   static defaultProps = {

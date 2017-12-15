@@ -1,4 +1,4 @@
-import './index.scss';
+import './Nav.scss';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
@@ -8,7 +8,7 @@ import prop from 'ramda/src/prop';
 import sortWith from 'ramda/src/sortWith';
 import values from 'ramda/src/values';
 import compose from 'ramda/src/compose';
-import { loadGroups } from '../../store/actions/loading';
+import { loadGroups } from '../store/actions/loading';
 
 const groupSort = sortWith([ascend(prop('name'))]);
 
@@ -29,7 +29,7 @@ class Nav extends Component {
         </NavLink>
       </li>
     ), this.props.groups);
-    
+
     return (
       <nav className={this.props.open ? 'nav nav--open' : 'nav'}>
         <ul className="nav__list">

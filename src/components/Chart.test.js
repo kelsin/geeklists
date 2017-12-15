@@ -1,4 +1,4 @@
-import { arrayOfMonths, findGeeklist, getStat } from './index';
+import { arrayOfMonths, findGeeklist, getStat } from './Chart';
 import moment from 'moment';
 import timekeeper from 'timekeeper';
 import zip from 'ramda/src/zip';

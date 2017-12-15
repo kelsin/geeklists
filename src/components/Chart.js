@@ -21,7 +21,7 @@ import sortWith from 'ramda/src/sortWith';
 import tail from 'ramda/src/tail';
 import values from 'ramda/src/values';
 
-import './index.scss';
+import './Chart.scss';
 
 const arrayOfMonths = (startYear, startMonth) => {
   let start = moment(`${startYear}-${startMonth}-01`, 'YYYY-MM-DD');

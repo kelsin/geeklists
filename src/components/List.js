@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import map from 'ramda/src/map';
 
-import BGGLink from '../BGGLink';
-import Entry from '../Entry';
+import BGGLink from './BGGLink';
+import Entry from './Entry';
 
 class List extends Component {
   render() {
@@ -19,6 +19,7 @@ class List extends Component {
         <tr key={list.id}>
           <td colSpan="6">
             <Link to={"/group/" + slug + "/geeklist/" + list.id}>{list.title}</Link>
+            &nbsp;
             <BGGLink type="geeklist" id={list.id}/>
           </td>
         </tr>
